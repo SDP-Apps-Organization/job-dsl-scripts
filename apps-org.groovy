@@ -1,8 +1,8 @@
-githubOrg = "SDP-Apps-Organization"
-credId = "github-creds"
-apiUri = "https://api.github.com"
-orgPipelineRepo = "https://github.com/SDP-Apps-Organization/org-pipeline-configuration.git"
-libraryRepo = "https://github.com/SDP-Apps-Organization/sdp-libraries.git"
+githubOrg = System.getenv("TENANT_GITHUB_ORG")
+credId = System.getenv("TENANT_GITHUB_CREDS_ID")
+apiUri = System.getenv("TENANT_GITHUB_API_URL")
+orgPipelineRepo = System.getenv("TENANT_GITHUB_CONFIG_URL")
+libraryRepo = System.getenv("TENANT_GITHUB_LIBRARY_URL")
 
 organizationFolder githubOrg, {
   configure{
