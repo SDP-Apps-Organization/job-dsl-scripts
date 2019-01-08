@@ -54,6 +54,11 @@ organizationFolder githubOrg, {
       buildOriginPRHead false
       buildForkPRMerge false
       buildForkPRHead false
+      traits {
+        'jenkins.scm.impl.trait.WildcardSCMSourceFilterTrait'{
+          includes "sdp-example-proj"
+        }
+      }
     }
     it / 'projectFactories' << 'org.boozallen.plugins.jte.job.TemplateMultiBranchProjectFactory' {
     }
