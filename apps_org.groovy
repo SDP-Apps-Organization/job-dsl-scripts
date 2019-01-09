@@ -45,20 +45,18 @@ organizationFolder githubOrg, {
     }
     it / 'navigators' << 'org.jenkinsci.plugins.github__branch__source.GitHubSCMNavigator'{
       repoOwner githubOrg
-      scanCredentialsId credId
-      checkoutCredentialsId 'SAME'
-      apiUri apiUri
-      buildOriginBranch true
-      buildOriginBranchWithPR false
-      buildOriginPRMerge true
-      buildOriginPRHead false
-      buildForkPRMerge false
-      buildForkPRHead false
-      // traits {
-      //   'jenkins.scm.impl.trait.WildcardSCMSourceFilterTrait'{
-      //     includes "sdp-example-proj"
-      //   }
-      // }
+      credentialsId credId
+      traits {
+        'jenkins.scm.impl.trait.WildcardSCMSourceFilterTrait'{
+          includes "sdp-example-proj"
+        }
+        'org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait'{
+          strategyId 1
+        }
+        'org.jenkinsci.plugins.github__branch__source.OriginPullRequestDiscoveryTrait'{
+          strategyId 1
+        }
+      }
     }
     it / 'projectFactories' << 'org.boozallen.plugins.jte.job.TemplateMultiBranchProjectFactory' {
     }
